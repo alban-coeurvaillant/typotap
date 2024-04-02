@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Tiny Test</title>
+  <style>
+    :root {
+      --font-base: 64;
+      --r:255;
+      --v:255;
+      --b:0;
+      --wght:60;
+    }
+ 
+    @font-face {
+      font-family:'tiny';
+      font-style:normal;
+      font-weight:400;
+      src:url("TINY5x3GX.ttf") format("truetype");
+    }
+ 
+    .interface{
+      padding:24px;
+      display:flex;
+      background: #fff;
+      font-family: sans-serif;
+    }
+ 
+    body{
+      background:rgb(calc(255 - var(--r)),calc(255 - var(--v)),calc(255 - var(--b)));
+      margin:0;
+    }
+ 
+    article{
+      padding:24px;
+      font-size:  calc(var(--font-base) * 1px);
+      color:rgb(var(--r),var(--v),var(--b));
+      font-family: "tiny";
+      font-variation-settings: "wght" var(--wght);
+    }
+ 
+    p{
+      margin:0;
+    }
+ 
+    input,label{
+      font-size: 16px;
+      display:inline;
+      margin-right:12px;
+    }
+ 
+    input{
+      margin-right:32px;
+    }
+ 
+  </style>
+</head>
+<body>
+  <div class="interface">
+    <label for="fader-size">Font-Size</label>
+  <input type="range" min="16" max="256" value="64" id="fader-size" step="1">
+ 
+  <label for="fader-r">R</label>
+  <input type="range" min="0" max="255" value="255" id="fader-r" step="1">
+ 
+  <label for="fader-v">V</label>
+  <input type="range" min="0" max="255" value="255" id="fader-v" step="1">
+ 
+  <label for="fader-v">B</label>
+  <input type="range" min="0" max="255" value="0" id="fader-b" step="1">
+ 
+    <label for="fader-wght">WGHT</label>
+  <input type="range" min="20" max="300" value="60" id="fader-wght" step="1">
+  </div>
+  <article>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, sit dolore nostrum aliquam a consequuntur ducimus alias dignissimos maiores corrupti quidem non dolores est assumenda quis ea quae ipsum placeat!</p>
+ 
+  </article>
+<script>
+  var faderSize = document.querySelector('#fader-size');
+  var faderR = document.querySelector('#fader-r');
+  var faderV = document.querySelector('#fader-v');
+  var faderB = document.querySelector('#fader-b');
+  var faderWGHT = document.querySelector('#fader-wght');
+ 
+  var dS = document.documentElement.style;
+ 
+  faderSize.addEventListener('input',function(e){
+    console.log(faderSize.value);
+    dS.setProperty('--font-base', this.value);
+  });
+ 
+  faderR.addEventListener('input',function(e){
+    dS.setProperty('--r', this.value);
+  });
+ 
+  faderV.addEventListener('input',function(e){
+    dS.setProperty('--v', this.value);
+  });
+ 
+  faderB.addEventListener('input',function(e){
+    dS.setProperty('--b', this.value);
+  });
+ 
+  faderWGHT.addEventListener('input',function(e){
+    dS.setProperty('--wght', this.value);
+  });
+ 
+ 
+</script>
+ 
+</body>
+</html>
